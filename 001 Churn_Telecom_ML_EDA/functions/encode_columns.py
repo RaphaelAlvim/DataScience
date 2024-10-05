@@ -19,7 +19,7 @@ def encode_columns(df, ohe_columns=None, label_columns=None):
 
     # Aplicar One-Hot Encoding, se as colunas forem fornecidas
     if ohe_columns is not None:
-        df_encoded = pd.get_dummies(df_encoded, columns=ohe_columns, drop_first=True)
+        df_encoded = pd.get_dummies(df_encoded, columns=ohe_columns, drop_first=False)
 
     # Aplicar Label Encoding, se as colunas forem fornecidas
     if label_columns is not None:
