@@ -35,7 +35,7 @@ def format_column_names_and_data(*dfs):
     *dfs (list of pd.DataFrame): Um ou mais DataFrames a serem formatados.
 
     Retorna:
-    list of pd.DataFrame: Lista de DataFrames com nomes de colunas e valores de colunas categóricas formatados.
+    pd.DataFrame ou tuple of pd.DataFrame: Retorna o DataFrame formatado ou uma tupla com múltiplos DataFrames.
     """
     
     formatted_dfs = []
@@ -51,7 +51,14 @@ def format_column_names_and_data(*dfs):
         
         formatted_dfs.append(df)
     
-    return formatted_dfs
+    # Se apenas um DataFrame for fornecido, retornar apenas ele, não uma tupla/lista
+    if len(formatted_dfs) == 1:
+        return formatted_dfs[0]
+    
+    # Se múltiplos DataFrames forem fornecidos, retornar como tupla
+    return tuple(formatted_dfs)
 
 # Exemplo de uso:
+# df_formatted = format_column_names_and_data(df1)
+# ou
 # df_formatted_1, df_formatted_2 = format_column_names_and_data(df1, df2)
